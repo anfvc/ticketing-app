@@ -5,7 +5,7 @@
   --color-page: #2b3441;
   --color-card: "#47566a";
   --color-card-hover: "#4f5e74";
-  --text-default-text: "#f1f3f5";
-  --text-blue-accent: "#0084d4";
-  --text-blue-accent-hover: "#009fff";
+  --color-default-text: white;
+  --color-blue-accent: "#0084d4";
+  --color-blue-accent-hover: "#009fff";
 }
