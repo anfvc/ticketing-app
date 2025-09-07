@@ -20,7 +20,18 @@ const TicketForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDEfault();
+    e.preventDefault();
+
+    const settings = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
+
+    const response = await fetch("api/Tickets", settings);
+
     console.log("Submitted successfully!");
   };
 
