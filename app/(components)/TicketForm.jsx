@@ -19,7 +19,8 @@ const TicketForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDEfault();
     console.log("Submitted successfully!");
   };
 
