@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import react, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const TicketForm = () => {
   const startingTicketData = {
@@ -14,6 +14,7 @@ const TicketForm = () => {
   };
 
   const [formData, setFormData] = useState(startingTicketData);
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,10 +28,21 @@ const TicketForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ formData }),
     };
 
-    const response = await fetch("api/Tickets", settings);
+    const response = await fetch("/api/Tickets", settings);
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      router.refresh();
+      router.push("/");
+    } else {
+      throw new Error("Error submitting the form!");
+    }
+
+    // console.log(response);
 
     console.log("Submitted successfully!");
   };
@@ -43,7 +55,7 @@ const TicketForm = () => {
         onSubmit={handleSubmit}
       >
         <h3>Create your ticket:</h3>
-        <label htmlFor="">Title</label>
+        <label htmlFor="title">Title</label>
         <input
           type="text"
           id="title"
@@ -52,7 +64,7 @@ const TicketForm = () => {
           required={true}
           value={formData.title}
         />
-        <label htmlFor="Description">Description</label>
+        <label htmlFor="description">Description</label>
         <textarea
           type="text"
           id="description"
@@ -62,7 +74,7 @@ const TicketForm = () => {
           value={formData.description}
           rows={4}
         />
-        <label htmlFor="Categoy">Category</label>
+        <label htmlFor="categoy">Category</label>
         <select
           name="category"
           id="category"
@@ -76,19 +88,11 @@ const TicketForm = () => {
 
         <label htmlFor="Priority">Priority</label>
         <div>
-          <input
-            type="radio"
-            id="priority-1"
-            name="priorirty"
-            onChange={handleChange}
-            value={1}
-            checked={formData.priority == 1} //dont care about the type pls
-          />
           <label htmlFor="priority-1">1</label>
           <input
             type="radio"
             id="priority-1"
-            name="priorirty"
+            name="priority"
             onChange={handleChange}
             value={1}
             checked={formData.priority == 1} //dont care about the type pls
@@ -96,8 +100,8 @@ const TicketForm = () => {
           <label htmlFor="priority-2">2</label>
           <input
             type="radio"
-            id="priority-1"
-            name="priorirty"
+            id="priority-2"
+            name="priority"
             onChange={handleChange}
             value={2}
             checked={formData.priority == 2} //dont care about the type pls
@@ -106,7 +110,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-3"
-            name="priorirty"
+            name="priority"
             onChange={handleChange}
             value={3}
             checked={formData.priority == 3} //dont care about the type pls
@@ -115,7 +119,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-4"
-            name="priorirty"
+            name="priority"
             onChange={handleChange}
             value={4}
             checked={formData.priority == 4} //dont care about the type pls
@@ -124,7 +128,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-5"
-            name="priorirty"
+            name="priority"
             onChange={handleChange}
             value={5}
             checked={formData.priority == 5} //dont care about the type pls
@@ -151,7 +155,9 @@ const TicketForm = () => {
           <option value="started">Started</option>
           <option value="done">Done</option>
         </select>
-        <input type="submit" value="Create Ticket" className="btn" />
+        <button className="btn" value="Create Ticket">
+          Create Ticket
+        </button>
       </form>
     </div>
   );
