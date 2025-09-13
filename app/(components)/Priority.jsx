@@ -8,7 +8,7 @@ const PriorityDisplay = ({ priority }) => {
     <div className="flex justify-start align-baseline">
       <FontAwesomeIcon
         icon={faHeart}
-        className={`${priority > 0 && priority <= 3 ? "text-blue-accent" : "text-yellow-400"}`}
+        className={`${priority > 0 }`}
       />
       <FontAwesomeIcon icon={faFire} className="text-red-400" />
       <FontAwesomeIcon icon={faFire} className="text-red-400" />
