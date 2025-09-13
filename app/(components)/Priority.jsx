@@ -1,10 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { faFire, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-const PriorityDisplay = () => {
+const PriorityDisplay = ({ priority }) => {
+  console.log(priority);
   return (
     <div className="flex justify-start align-baseline">
+      <FontAwesomeIcon
+        icon={faHeart}
+        className={`${priority > 0 && priority <= 3 ? "text-blue-accent" : "text-yellow-400"}`}
+      />
       <FontAwesomeIcon icon={faFire} className="text-red-400" />
       <FontAwesomeIcon icon={faFire} className="text-red-400" />
       <FontAwesomeIcon icon={faFire} className="text-red-400" />
