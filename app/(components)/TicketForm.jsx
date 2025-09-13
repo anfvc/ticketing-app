@@ -86,13 +86,13 @@ const TicketForm = () => {
           <option value="Projects">Projects</option>
         </select>
 
-        <label htmlFor="Priority">Priority</label>
+        <label htmlFor="priority-1">Priority</label>
         <div>
           <label htmlFor="priority-1">1</label>
           <input
             type="radio"
             id="priority-1"
-            name="priority"
+            name="priority-1"
             onChange={handleChange}
             value={1}
             checked={formData.priority == 1} //dont care about the type pls
@@ -101,7 +101,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-2"
-            name="priority"
+            name="priority-2"
             onChange={handleChange}
             value={2}
             checked={formData.priority == 2} //dont care about the type pls
@@ -110,7 +110,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-3"
-            name="priority"
+            name="priority-3"
             onChange={handleChange}
             value={3}
             checked={formData.priority == 3} //dont care about the type pls
@@ -119,7 +119,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-4"
-            name="priority"
+            name="priority-4"
             onChange={handleChange}
             value={4}
             checked={formData.priority == 4} //dont care about the type pls
@@ -128,7 +128,7 @@ const TicketForm = () => {
           <input
             type="radio"
             id="priority-5"
-            name="priority"
+            name="priority-5"
             onChange={handleChange}
             value={5}
             checked={formData.priority == 5} //dont care about the type pls

@@ -35,3 +35,23 @@ export async function GET() {
     );
   }
 }
+
+export async function DELETE(req) {
+  try {
+    const body = await req.json();
+    const { id } = body;
+    await Ticket.findByIdAndDelete(id);
+    return NextResponse.json(
+      { message: "The ticket was deleted successfully!" },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "We could not delete this ticket. Please try again later.",
+        error,
+      },
+      { status: 500 }
+    );
+  }
+}
